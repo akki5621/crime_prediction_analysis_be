@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crime Analysis and Prediction</title>
+    <link rel="stylesheet" type="text/css" href='/static/style.css' />
+
+</head>
+<body>
+    <h1>Crime Analysis and Prediction</h1>
+    <form method="post">
+        <label for="state">Select a state:</label>
+        <select id="state" name="state">
+            {% for state in states %}
+                <option value="{{ state }}">{{ state }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="crime_type">Select a crime type:</label>
+        <select id="crime_type" name="crime_type">
+            {% for crime_type in crime_types %}
+                <option value="{{ crime_type }}">{{ crime_type }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if predicted_value %}
+        <p>Predicted crime rate: {{ predicted_value }}</p>
+    {% endif %}
+</body>
+</html>
